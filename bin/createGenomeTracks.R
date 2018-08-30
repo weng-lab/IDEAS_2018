@@ -182,6 +182,7 @@ if(scale)
 
 if(show)
 {
+	m=m[,order(colnames(m))] # sort markers here
 	plot(NA,NA,xlim=c(0,p+0.7),ylim=c(0,l),xaxt="n",yaxt="n",xlab=NA,ylab=NA,frame.plot=F);
 	axis(1,at=1:p-0.5,labels=colnames(m),las=2);
 	axis(4,at=1:l-0.5,labels=rownames(m),las=2);
