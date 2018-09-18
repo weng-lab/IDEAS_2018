@@ -205,7 +205,7 @@ if(show)
 				{	markcolor[i,]=c(0,150,0);	}
 				if(regexpr("h2a",tolower(marks[i]))>0)
 				{	markcolor[i,]=c(0,150,150);	}
-				if(regexpr("dnase",tolower(marks[i]))>0)
+				if(regexpr("dname",tolower(marks[i]))>0)
 				{	markcolor[i,]=c(0,200,200);	}
 				if(regexpr("atac",tolower(marks[i]))>0)
 				{	markcolor[i,]=c(200,50,150);	}
