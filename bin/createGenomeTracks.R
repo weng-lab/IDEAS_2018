@@ -180,13 +180,14 @@ if(scale)
         my_palette=colorRampPalette(cols)(n=100);
 	defpalette=palette(my_palette);
 
-if(show)
-{
-	plot(NA,NA,xlim=c(0,p+0.7),ylim=c(0,l),xaxt="n",yaxt="n",xlab=NA,ylab=NA,frame.plot=F);
-	axis(1,at=1:p-0.5,labels=colnames(m),las=2);
-	axis(4,at=1:l-0.5,labels=rownames(m),las=2);
-	rect(rep(1:p-1,l),rep(1:l-1,each=p),rep(1:p,l),rep(1:l,each=p),col=round((t(m)-rg[1])/(rg[2]-rg[1])*100));#,border=NA);
-}
+# move signal heatmap plot below
+#if(show)
+#{
+#	plot(NA,NA,xlim=c(0,p+0.7),ylim=c(0,l),xaxt="n",yaxt="n",xlab=NA,ylab=NA,frame.plot=F);
+#	axis(1,at=1:p-0.5,labels=colnames(m),las=2);
+#	axis(4,at=1:l-0.5,labels=rownames(m),las=2);
+#	rect(rep(1:p-1,l),rep(1:l-1,each=p),rep(1:p,l),rep(1:l,each=p),col=round((t(m)-rg[1])/(rg[2]-rg[1])*100));#,border=NA);
+#}
 #if(scale)
 #{	m = om;
 #}
@@ -229,9 +230,20 @@ if(show)
 		}
 		statecolor=array(stateColor(m,markcolor),dim=c(dim(m)[1],2));
 	}
+ 
+ 	# sort the marks by name
+ 	m_sort = m[,order(colnames(m))]
+	m = m_sort
+ 
 	if(show)
-	{	rect(rep(p+0.2,l),1:l-0.8,rep(p+0.8,l),1:l-0.2,col=statecolor[,2]);
+	{	
+		plot(NA,NA,xlim=c(0,p+0.7),ylim=c(0,l),xaxt="n",yaxt="n",xlab=NA,ylab=NA,frame.plot=F);
+		axis(1,at=1:p-0.5,labels=colnames(m),las=2);
+		axis(4,at=1:l-0.5,labels=rownames(m),las=2);
+		rect(rep(1:p-1,l),rep(1:l-1,each=p),rep(1:p,l),rep(1:l,each=p),col=round((t(m)-rg[1])/(rg[2]-rg[1])*100));#,border=NA);
+		rect(rep(p+0.2,l),1:l-0.8,rep(p+0.8,l),1:l-0.2,col=statecolor[,2]);
 	}
+ 
 	if(sortstate)	statecolor[o,]=statecolor;
 
 	palette(defpalette);
