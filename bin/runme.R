@@ -242,7 +242,7 @@ if(maketrack)
 	#	p=x[,1]/sum(x[,1]);
 	#	m=array(as.matrix(x[,1:l+1]/x[,1]),dim=c(dim(x)[1],l));
 	#	sc=stateColor(m, mc);
-		sc=createHeatmap(paste(targetfile[1],".para",sep=""),markcolor=mc,scale=F);
+		sc=createHeatmap(paste(targetfile[1],".para",sep=""),markcolor=mc,scale=TRUE);
 	}
 
 	hubid=id;
